@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake NFT DApp</title>
+  <style>
+    body { margin:0; font-family: Arial, sans-serif; background:#0e0e0e; color:#f5f5f5; }
+    header img, footer img { width:100%; max-height:250px; object-fit:cover; display:block; }
+
+    /* Hamburger */
+    .hamburger { position:fixed; top:15px; left:15px; font-size:30px; cursor:pointer; z-index:1001; color:#ffd700; }
+    .sidebar { height:100%; width:0; position:fixed; top:0; left:0; background:#1a1a1a; overflow-x:hidden; transition:0.3s; padding-top:60px; z-index:1000; }
+    .sidebar a { padding:12px 20px; text-decoration:none; font-size:18px; color:#fff; display:block; transition:0.2s; }
+    .sidebar a:hover { background:#333; }
+    .sidebar .closebtn { position:absolute; top:10px; right:20px; font-size:36px; }
+
+    /* Sections */
+    section { padding:30px 20px; max-width:900px; margin:20px auto; background:#1a1a1a; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.5); }
+    h2 { color:#ffd700; border-bottom:2px solid #ffd700; padding-bottom:5px; }
+    table { width:100%; border-collapse:collapse; margin-top:15px; border-radius:8px; overflow:hidden; }
+    table, th, td { border:1px solid #444; }
+    th, td { padding:10px; text-align:center; }
+    th { background:#333; }
+    td { background:#222; }
+    select, button { padding:10px; font-size:16px; border:none; border-radius:5px; margin-top:10px; }
+    select { background:#222; color:#fff; }
+    button { background:#ffd700; cursor:pointer; }
+    button:hover { background:#e6c200; }
+  </style>
+</head>
+<body>
+
+  <!-- Banner Top -->
+  <header>
+    <img src="https://ipfs.atomichub.io/ipfs/QmW7GSQ2fQuVYtQ7q8wJdPoyZ3J1mXx9VrKy7oQ2R8p3ax" alt="Snake Special Pack">
+  </header>
+
+  <!-- Hamburger -->
+  <span class="hamburger" onclick="openNav()">&#9776;</span>
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#staking">Staking</a>
+    <a href="#unstake">Unstake</a>
+    <a href="#claim">Claim</a>
+    <a href="#shop">Shop</a>
+    <a href="#whitepaper">Whitepaper</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#rewards">Rewards</a>
+    <a href="#settings">Settings</a>
+    <a href="#connect">Connect Wombat</a>
+  </div>
+
+  <!-- Whitepaper -->
+  <section id="whitepaper">
+    <h2>Whitepaper</h2>
+    <p>
+      Snake NFT is a Play-to-Earn project built on the WAX blockchain.  
+      Players can stake their Snake NFTs of different rarities to generate daily WAX rewards.  
+      Each rarity tier provides a unique reward rate, designed to ensure fairness and long-term sustainability of the ecosystem.
+    </p>
+    <p>
+      Our mission is to create a fun, rewarding, and community-driven economy where Snake NFT holders benefit from both gameplay and token rewards.  
+      The project will expand over time with new game mechanics, seasonal events, and collaborations across the WAX ecosystem.  
+      Transparency and fair distribution are our core principles.  
+      By holding and staking your Snake NFTs, you become part of the growing Snake Metaverse.
+    </p>
+  </section>
+
+  <!-- Roadmap -->
+  <section id="roadmap">
+    <h2>Roadmap</h2>
+    <ul>
+      <li><b>Q1 2025:</b> Launch of Snake NFT Pack and basic staking system.</li>
+      <li><b>Q2 2025:</b> Integration of in-app shop and marketplace features.</li>
+      <li><b>Q3 2025:</b> Competitive player events with boosted rewards.</li>
+      <li><b>Q4 2025:</b> Expansion of the ecosystem and partnerships with other WAX projects.</li>
+      <li><b>2026 and beyond:</b> New gameplay features, seasonal packs, and community-driven governance.</li>
+    </ul>
+  </section>
+
+  <!-- Rewards -->
+  <section id="rewards">
+    <h2>Rewards</h2>
+    <table>
+      <tr><th>Snake Type</th><th>Reward / Day</th></tr>
+      <tr><td>Common Snake</td><td>0.001 WAX</td></tr>
+      <tr><td>Uncommon Snake</td><td>0.004 WAX</td></tr>
+      <tr><td>Rare Snake</td><td>0.007 WAX</td></tr>
+      <tr><td>Epic Snake</td><td>0.01 WAX</td></tr>
+      <tr><td>Legendary Snake</td><td>0.1 WAX</td></tr>
+      <tr><td>King Snake</td><td>0.5 WAX</td></tr>
+      <tr><td>Worker Snake</td><td>1 WAX</td></tr>
+    </table>
+  </section>
+
+  <!-- Settings -->
+  <section id="settings">
+    <h2>Settings</h2>
+    <label for="language">Language:</label>
+    <select id="language" onchange="changeLanguage()">
+      <option value="en">English</option>
+      <option value="id">Indonesia</option>
+    </select>
+  </section>
+
+  <!-- Connect -->
+  <section id="connect">
+    <h2>Wallet</h2>
+    <p>Connect your wallet using Wombat to start staking your Snake NFTs.</p>
+    <button onclick="connectWombat()">Connect Wombat</button>
+  </section>
+
+  <!-- Banner Bottom -->
+  <footer>
+    <img src="https://ipfs.atomichub.io/ipfs/QmZpFydczLhMwcCzWgwQ84WoCp6Vq9uRo4ANcX1zF5hY5p" alt="King Snake">
+  </footer>
+
+  <script>
+    function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
+    function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+    function changeLanguage() {
+      let lang = document.getElementById("language").value;
+      alert("Language changed to: " + lang);
+    }
+    async function connectWombat() {
+      alert("Connecting to Wombat wallet...");
+      // TODO: Integrate with Wombat API
+    }
+  </script>
+</body>
+</html>
